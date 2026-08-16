@@ -12,6 +12,8 @@ import analyticsRoutes from './routes/analyticsRoutes.js';
 import checkoutRoutes from './routes/checkoutRoutes.js';
 import messRoutes from './routes/messRoutes.js';
 import customerPortalRoutes from './routes/customerPortalRoutes.js';
+import mealRoutes from './routes/mealRoutes.js';
+import pollRoutes from './routes/pollRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -31,10 +33,14 @@ app.use('/api/plans', planRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/expenses', expenseRoutes);
-app.use('/api', analyticsRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use('/api/messes', messRoutes);
 app.use('/api/customer-portal', customerPortalRoutes);
+app.use('/api/meals', mealRoutes);
+app.use('/api/polls', pollRoutes);
+// Keep this broad mount last: its owner-only middleware must not intercept
+// customer/public routes such as /api/messes and /api/customer-portal.
+app.use('/api', analyticsRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
