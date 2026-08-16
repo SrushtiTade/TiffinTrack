@@ -99,6 +99,4 @@ The app runs at `http://localhost:5173`.
 | GET | `/api/reports/profit` | Profit report |
 | GET | `/api/reports/customers` | Customer report |
 
-## License
 
-MIT
