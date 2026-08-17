@@ -77,6 +77,8 @@ The app runs at `http://localhost:5173`.
 | `PORT` | Backend server port | `5000` |
 | `MONGODB_URI` | MongoDB connection string | `mongodb://localhost:27017/tiffintrack` |
 | `JWT_SECRET` | Secret for JWT signing | (set in `.env`) |
+| `RAZORPAY_KEY_ID` | Razorpay key ID (safe to return only for Checkout initialization) | (set in `.env`) |
+| `RAZORPAY_KEY_SECRET` | Razorpay secret used only by the backend to create and verify orders | (set in `.env`) |
 
 ## API Endpoints
 
@@ -85,6 +87,11 @@ The app runs at `http://localhost:5173`.
 | POST | `/api/auth/register` | Register owner |
 | POST | `/api/auth/login` | Login |
 | GET | `/api/auth/me` | Get current user |
+| POST | `/api/auth/register-customer` | Register a customer account |
+| GET | `/api/messes` | Browse active messes and plans |
+| GET | `/api/messes/:id` | View a mess and active plans |
+| GET/POST | `/api/checkout/preview`, `/api/checkout/orders` | Validate checkout and create a Razorpay order |
+| POST | `/api/checkout/verify` | Verify Razorpay payment and create subscription |
 | CRUD | `/api/customers` | Customer management |
 | CRUD | `/api/plans` | Plan management |
 | GET/POST | `/api/subscriptions` | Subscription management |
